@@ -116,7 +116,7 @@ const services = [
 
 const withoutAi = ["Order", "API", "Database", "Inventory", "Notification"];
 const withAi = ["Document", "AI Extraction", "Validation", "Database", "Workflow"];
-const copies = [0, 1];
+const copies = [0];
 
 const steps = [
   {
@@ -384,6 +384,8 @@ const steps = [
     // Per-card pop weight (1 = center, 0 = edge), refreshed by
     // applyFocus; the cursor tilt uses it so side cards stay flat.
     let pops = cards.map(() => 0);
+    // Card under the cursor (desktop hover highlight), -1 = none.
+    let hoverIdx = -1;
 
     // Smooth "pop" setters: center card lifts and scales, sides fade.
     const setters = reduced
@@ -395,7 +397,10 @@ const steps = [
           r: gsap.quickTo(c, "rotation", { duration: 0.5, ease: "power2.out" }),
         }));
 
-    const wrap = (v: number) => ((v % W) + W) % W;
+    // Single set, no loop: scroll is clamped to
+    // [0, trackWidth - viewport] so it stops at both ends.
+    const maxR = () => Math.max(0, W - viewport.clientWidth);
+    const clampR = (v: number) => Math.min(maxR(), Math.max(0, v));
 
     const setBar = (p: number) => {
       if (bar) bar.style.transform = `scaleX(${Math.min(1, Math.max(0, p))})`;
@@ -441,13 +446,16 @@ const steps = [
         }
         const f = Math.min(1, d / fade);
         const pop = 1 - f;
-        pops[i] = pop;
+        // Hovered card keeps its boosted values and full tilt weight.
+        pops[i] = i === hoverIdx ? 1 : pop;
+        if (i === hoverIdx) return;
         setters[i].o(Math.max(0.45, 1 - 0.55 * f));
         setters[i].s(1 + 0.07 * pop * pop);
         setters[i].y(-12 * pop);
       });
-      // Elevation class on the center card: pine border + shadow with a
-      // CSS transition, so the "pop" reads even at rest.
+      // Elevation class follows the cursor while hovering; otherwise
+      // it sits on the card nearest the viewport center.
+      if (hoverIdx >= 0) return;
       if (bestIdx !== prevFocusIdx) {
         if (prevFocusIdx >= 0) cards[prevFocusIdx]?.classList.remove("hs-focus");
         cards[bestIdx]?.classList.add("hs-focus");
@@ -456,9 +464,9 @@ const steps = [
     };
 
     const render = () => {
-      const r = wrap(current);
+      const r = clampR(current);
       gsap.set(track, { x: -r });
-      setBar(r / W);
+      setBar(maxR() > 0 ? r / maxR() : 0);
     };
 
     // Carousel snap: once momentum settles, ease to the position where
@@ -470,7 +478,9 @@ const steps = [
       const { bestCx } = nearestCard();
       const delta = bestCx - vw / 2;
       if (Math.abs(delta) < 1) return false;
-      target += delta;
+      const next = clampR(target + delta);
+      if (Math.abs(next - target) < 0.5) return false;
+      target = next;
       return true;
     };
 
@@ -498,14 +508,8 @@ const steps = [
 
     const recenter = () => {
       W = setW();
-      // Start at r = 0, then measure card 0 and shift so it sits
-      // dead-center in the viewport.
+      // Single set, no loop: always start flush at the left edge.
       current = target = 0;
-      render();
-      const vw = viewport.clientWidth;
-      const { bestCx } = nearestCard();
-      const r0 = bestCx - vw / 2;
-      current = target = wrap(r0);
       render();
     };
 
@@ -518,7 +522,7 @@ const steps = [
         const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? viewport.clientWidth : 1;
         const d =
           Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-        target += d * unit;
+        target = clampR(target + d * unit);
         e.preventDefault();
         ensure();
       },
@@ -531,7 +535,7 @@ const steps = [
       () => {
         if (desktop) return;
         const max = viewport.scrollWidth - viewport.clientWidth;
-        setBar(max > 0 ? wrap(viewport.scrollLeft) / W : 0);
+        setBar(max > 0 ? viewport.scrollLeft / max : 0);
         applyFocus();
       },
       { passive: true }
@@ -564,6 +568,46 @@ const steps = [
           });
         }
 
+        // Hover highlight: pine border + full pop follow the cursor
+        // instead of the viewport center. Leaving the strip hands the
+        // highlight back to the center card.
+        const onHoverMove = (e: PointerEvent) => {
+          const t = e.target as Element | null;
+          const card = t?.closest?.("[data-hs-card]") as HTMLElement | null;
+          const idx = card ? cards.indexOf(card) : -1;
+          if (idx === hoverIdx) return;
+          if (hoverIdx >= 0) {
+            cards[hoverIdx].classList.remove("hs-focus");
+          }
+          if (prevFocusIdx >= 0) {
+            cards[prevFocusIdx]?.classList.remove("hs-focus");
+            prevFocusIdx = -1;
+          }
+          hoverIdx = idx;
+          if (hoverIdx >= 0) {
+            cards[hoverIdx].classList.add("hs-focus");
+            pops[hoverIdx] = 1;
+            setters[hoverIdx].o(1);
+            setters[hoverIdx].s(1.07);
+            setters[hoverIdx].y(-12);
+          } else {
+            applyFocus();
+          }
+        };
+        const onHoverEnd = () => {
+          if (hoverIdx >= 0) cards[hoverIdx].classList.remove("hs-focus");
+          hoverIdx = -1;
+          applyFocus();
+        };
+        if (finePointer) {
+          viewport.addEventListener("pointermove", onHoverMove, {
+            passive: true,
+          });
+          viewport.addEventListener("pointerleave", onHoverEnd, {
+            passive: true,
+          });
+        }
+
         const onResize = () => {
           recenter();
           render();
@@ -589,6 +633,9 @@ const steps = [
           window.removeEventListener("load", onLoad);
           viewport.removeEventListener("pointermove", onTilt);
           viewport.removeEventListener("pointerleave", onTiltLeave);
+          viewport.removeEventListener("pointermove", onHoverMove);
+          viewport.removeEventListener("pointerleave", onHoverEnd);
+          hoverIdx = -1;
           gsap.set(track, { clearProps: "transform" });
           cards.forEach((c) => {
             gsap.set(c, { clearProps: "opacity,transform" });

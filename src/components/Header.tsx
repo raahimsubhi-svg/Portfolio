@@ -18,9 +18,10 @@ export default function Header({ currentPath }: { currentPath: string }) {
       <div className="container-page relative flex h-16 items-center justify-between gap-4">
         <a
           href="/"
-          className="font-display text-lg font-bold tracking-tight"
+          className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"
           aria-label="Raahim home"
         >
+          <img src="/favicon.svg" alt="" width="28" height="28" className="h-7 w-7" />
           Raahim
         </a>
         <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
