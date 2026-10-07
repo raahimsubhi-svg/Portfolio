@@ -1,0 +1,224 @@
+---
+import Base from "../layouts/Base.astro";
+import WorkflowDiagram from "../components/WorkflowDiagram";
+import WorkCaseGraphic from "../components/WorkCaseGraphic.astro";
+import VantaNet from "../components/VantaNet";
+import { CheckCircle } from "@phosphor-icons/react";
+
+const groups = [
+  {
+    tag: "Support",
+    blurb: "Calmer queues, same quality in every reply.",
+    projects: [
+      {
+        bottleneck: "Support team answers the same 40 questions daily",
+        steps: ["Inbox", "Draft", "Review", "Send"],
+        flowTitle: "Helper drafts replies for review, team sends in one click",
+        outcomes: ["Faster first replies", "Same answer quality every time"],
+      },
+      {
+        bottleneck: "Follow-ups slip when the queue spikes",
+        steps: ["Queue", "Prioritise", "Assign", "Remind"],
+        flowTitle: "Queue sorted by need with reminders that hold",
+        outcomes: ["Nothing left waiting", "Clear owner on every thread"],
+      },
+    ],
+  },
+  {
+    tag: "Sales",
+    blurb: "Every enquiry answered while it is fresh.",
+    projects: [
+      {
+        bottleneck: "Leads go cold because replies take 2 days",
+        steps: ["Capture", "Score", "Route", "Nudge"],
+        flowTitle: "New leads scored and routed with timely nudges",
+        outcomes: ["Same-day first reply", "Tidy record on every lead"],
+      },
+      {
+        bottleneck: "Quotes go quiet with no follow-up after they are sent",
+        steps: ["Quote", "Track", "Remind", "Re-engage"],
+        flowTitle: "Every open quote tracked with follow-ups that go out on time",
+        outcomes: ["No quote left unattended", "Stale deals surfaced early"],
+      },
+    ],
+  },
+  {
+    tag: "Finance",
+    blurb: "Figures checked before anything posts.",
+    projects: [
+      {
+        bottleneck: "Invoices typed by hand into records",
+        steps: ["Scan", "Extract", "Check", "Post"],
+        flowTitle: "Facts pulled from scans, checked, then posted",
+        outcomes: ["No retyping", "Human check before anything posts"],
+      },
+      {
+        bottleneck: "Overdue invoices are chased by hand, so reminders slip",
+        steps: ["Invoice", "Age", "Remind", "Escalate"],
+        flowTitle: "Reminders go out on schedule until the invoice is paid",
+        outcomes: ["Every overdue invoice followed up", "Cash arrives sooner"],
+      },
+    ],
+  },
+  {
+    tag: "Operations",
+    blurb: "One entry, shared everywhere.",
+    projects: [
+      {
+        bottleneck: "Updates copied between apps by hand",
+        steps: ["Trigger", "Map", "Sync", "Log"],
+        flowTitle: "One entry synced across apps with a clear log",
+        outcomes: ["Single entry, no copies", "Run log for every sync"],
+      },
+      {
+        bottleneck: "Stock counts drift between storefront and warehouse",
+        steps: ["Sale", "Sync", "Check", "Alert"],
+        flowTitle: "A sale updates stock everywhere the moment it happens",
+        outcomes: ["No overselling", "One count across every channel"],
+      },
+    ],
+  },
+  {
+    tag: "Data",
+    blurb: "One trusted view instead of pasted sheets.",
+    projects: [
+      {
+        bottleneck: "Weekly reports built by copy and paste",
+        steps: ["Collect", "Clean", "Chart", "Share"],
+        flowTitle: "Nightly collection into one shared view",
+        outcomes: ["One shared view", "No version clashes"],
+      },
+      {
+        bottleneck: "Payments matched to orders by hand every week",
+        steps: ["Payments", "Orders", "Match", "Flag"],
+        flowTitle: "Payments matched automatically, exceptions flagged for review",
+        outcomes: ["Mismatches found same day", "Only exceptions need a person"],
+      },
+    ],
+  },
+];
+---
+
+<Base
+  title="Work - Raahim"
+  description="Sample automation cases from Raahim: the bottleneck, the flow that fixes it, and the outcome for the team."
+>
+  <section
+    aria-labelledby="work-title"
+    class="band-wash dot-grid relative overflow-hidden"
+  >
+    <VantaNet client:only="react" />
+    <div class="container-page hero-layer relative py-9 md:py-11">
+      <div class="grid items-center gap-7 lg:grid-cols-2 lg:gap-8">
+        <div>
+          <p
+            class="text-xs font-semibold uppercase tracking-[0.18em] text-pine"
+            data-animate
+          >
+            My Work
+          </p>
+          <h1
+            id="work-title"
+            class="font-display mt-4 text-4xl font-bold leading-none tracking-tight text-balance md:text-5xl lg:text-[3.4rem]"
+            data-animate
+          >
+            Real Business Problems. Practical Automation.
+          </h1>
+          <p
+            class="mt-4 max-w-[54ch] text-base leading-relaxed text-ink-soft"
+            data-animate
+          >
+            A collection of automation systems built to solve real operational
+            problems.
+          </p>
+        </div>
+        <div class="mx-auto w-full max-w-[380px]" data-animate>
+          <div class="card rounded-2xl p-3 sm:p-4">
+            <div class="relative">
+              <WorkCaseGraphic />
+              {/* A3: invisible hotspots over the three case cards.
+                  The SVG stays aria-hidden; these links carry the
+                  labels and jump to the matching case groups. */}
+              <a
+                href="#support"
+                class="case-hot absolute rounded-[12px] transition-colors hover:bg-pine/10 hover:outline hover:outline-2 hover:outline-pine"
+                style="left:6%; top:12.94%; width:34%; height:16.47%"
+              >
+                <span class="sr-only">Jump to Support cases</span>
+              </a>
+              <a
+                href="#sales"
+                class="case-hot absolute rounded-[12px] transition-colors hover:bg-pine/10 hover:outline hover:outline-2 hover:outline-pine"
+                style="left:6%; top:41.76%; width:34%; height:16.47%"
+              >
+                <span class="sr-only">Jump to Sales cases</span>
+              </a>
+              <a
+                href="#finance"
+                class="case-hot absolute rounded-[12px] transition-colors hover:bg-pine/10 hover:outline hover:outline-2 hover:outline-pine"
+                style="left:6%; top:70.59%; width:34%; height:16.47%"
+              >
+                <span class="sr-only">Jump to Finance cases</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page pt-8" aria-label="Case categories">
+    <nav aria-label="Jump to a category" class="flex flex-wrap gap-2" data-animate>
+      {groups.map((g) => (
+        <a
+          href={`#${g.tag.toLowerCase()}`}
+          class="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium hover:bg-wash"
+        >
+          {g.tag}
+        </a>
+      ))}
+    </nav>
+  </section>
+
+  {groups.map((g, gi) => (
+    <section
+      id={g.tag.toLowerCase()}
+      aria-label={`${g.tag} cases`}
+      class={`container-page mt-12 scroll-mt-24 ${gi === groups.length - 1 ? "pb-16 md:pb-24" : ""}`}
+    >
+      <div
+        class={`rounded-2xl p-6 md:p-8 ${gi % 2 === 1 ? "card-wash dot-grid" : "band-wash"}`}
+        data-animate
+      >
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="font-display text-2xl font-bold tracking-tight">{g.tag}</h2>
+          <p class="text-sm text-ink-soft">{g.blurb}</p>
+        </div>
+        <div class="mt-4 h-px bg-line" data-draw></div>
+        <div class="mt-6 grid gap-5 lg:grid-cols-2">
+          {g.projects.map((p) => (
+              <article class="card lift flex flex-col p-6" data-animate data-run-card>
+              <p class="text-xs font-semibold uppercase tracking-widest text-pine">
+                {g.tag}
+              </p>
+              <h3 class="font-display mt-2 text-xl font-bold leading-snug">
+                {p.bottleneck}
+              </h3>
+              <div class="card-wash mt-4 p-3">
+                <WorkflowDiagram steps={p.steps} title={p.flowTitle} />
+              </div>
+              <ul class="mt-4 grid gap-2">
+                {p.outcomes.map((o) => (
+                  <li class="flex items-start gap-2 text-sm font-medium">
+                    <CheckCircle size={17} weight="fill" aria-hidden="true" class="mt-0.5 shrink-0 text-pine" />
+                    {o}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</Base>

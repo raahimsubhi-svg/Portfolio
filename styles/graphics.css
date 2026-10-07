@@ -1,0 +1,422 @@
+/* Graphic system: patterns, bands, dividers, chips. CSS and SVG only. */
+
+@layer components {
+  .dot-grid {
+    background-image: radial-gradient(rgb(23 32 29 / 0.14) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .dot-grid-light {
+    background-image: radial-gradient(rgb(255 255 255 / 0.22) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .band-wash {
+    background: var(--wash);
+    border-block: 1px solid var(--line);
+  }
+
+  .band-ink {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .section-divider {
+    border-top: 1px solid var(--line);
+  }
+
+  .stat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: var(--radius-pill);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .stat-chip-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid rgb(255 255 255 / 0.2);
+    background: rgb(255 255 255 / 0.08);
+    border-radius: var(--radius-pill);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .index-numeral {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.75rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--pine);
+  }
+
+  .card-dark .index-numeral {
+    color: #fff;
+  }
+
+  /* Before and after bar. Widths are illustrative placeholders,
+     real values arrive with measured results. */
+  .delta-bar {
+    height: 8px;
+    border-radius: 999px;
+    background: var(--line);
+    overflow: hidden;
+  }
+
+  .delta-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--pine);
+  }
+
+  .card-dark .delta-bar {
+    background: rgb(255 255 255 / 0.18);
+  }
+
+  .tile-accent-top {
+    border-top: 3px solid var(--pine);
+  }
+
+  /* Connector line draw-in for workflow diagrams.
+     Lines carry pathLength 1 so the dash animation fits any length.
+     Content is unaffected if CSS fails. Disabled under reduced motion. */
+  @keyframes flow-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .flow-line,
+  .flow-line-active {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: flow-draw 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .flow-line-active {
+    animation-delay: 0.15s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flow-line,
+    .flow-line-active {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* Hero content sits on its own compositor layer, so text and
+     buttons never repaint together with the WebGL canvas behind
+     them while scrolling. */
+  .hero-layer {
+    transform: translateZ(0);
+  }
+
+  /* Gentle float for small chip rows. Transform only, calm loop. */
+  @keyframes chip-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .float-soft {
+    animation: chip-float 6s ease-in-out infinite;
+  }
+
+  /* Lift on hover for cards and tiles. Transform and shadow only. */
+  .lift {
+    transition:
+      transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgb(23 32 29 / 0.1);
+    border-color: var(--pine);
+  }
+
+  .lift:active {
+    transform: translateY(-1px);
+  }
+
+  /* Sliding underline for quiet links. */
+  .link-slide {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1.5px;
+    background-position: left calc(100% - 0.05em);
+    background-repeat: no-repeat;
+    transition: background-size 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-bottom: 0.05em;
+  }
+
+  .link-slide:hover {
+    background-size: 100% 1.5px;
+  }
+
+  /* Mobile menu drop-in. */
+  @keyframes menu-drop {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .menu-drop {
+    animation: menu-drop 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: top center;
+  }
+
+  /* FAQ open: content fades and settles, marker turns. */
+  details.card > summary {
+    list-style-position: outside;
+  }
+
+  details.card[open] > summary ~ * {
+    animation: details-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes details-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lift,
+    .lift:hover,
+    .lift:active {
+      transform: none;
+      transition: none;
+    }
+    .link-slide {
+      transition: none;
+    }
+    .menu-drop,
+    details.card[open] > summary ~ * {
+      animation: none;
+    }
+  }
+}
+
+/* Service card visuals: flowing connector dashes and node pulses. */
+@layer components {
+  @keyframes dash-move {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+
+  .viz-flow {
+    stroke-dasharray: 5 5;
+    animation: dash-move 1.4s linear infinite;
+  }
+
+  @keyframes viz-pulse {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .viz-pulse {
+    animation: viz-pulse 2.6s ease-in-out infinite;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .viz-flow,
+    .viz-pulse {
+      animation: none;
+    }
+  }
+}
+
+/* Center-focus elevation for the horizontal service cards. */
+@layer components {
+  .card[data-hs-card] {
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .card[data-hs-card].hs-focus {
+    border-color: var(--pine);
+    box-shadow: 0 20px 44px -20px rgb(23 32 29 / 0.4);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card[data-hs-card] {
+      transition: none;
+    }
+  }
+}
+
+/* Services hero graphic: slow rotating dashed ring. */
+@layer components {
+  @keyframes viz-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .viz-spin {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: viz-spin 26s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .viz-spin {
+      animation: none;
+    }
+  }
+}
+
+/* A2: interactive nodes. Hovering a node lifts it (CSS `translate`
+   property so GSAP depth transforms on transform never collide)
+   and energizes the whole diagram's wires + pulses while the
+   pointer is inside. `:has` degrades to lift-only where unsupported. */
+@layer components {
+  .viz-node {
+    transition: translate 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+  }
+
+  .viz-node:hover {
+    translate: 0 -3px;
+  }
+
+  svg:has(.viz-node:hover) .viz-flow {
+    animation-duration: 0.7s;
+  }
+
+  svg:has(.viz-node:hover) .viz-pulse {
+    animation-duration: 1.1s;
+  }
+
+  /* A3: the invisible case-card hotspots sit ABOVE the SVG, so the
+     diagram energizes through the wrapper instead. */
+  .card:has(.case-hot:hover, .case-hot:focus-visible) .viz-flow {
+    animation-duration: 0.7s;
+  }
+
+  .card:has(.case-hot:hover, .case-hot:focus-visible) .viz-pulse {
+    animation-duration: 1.1s;
+  }
+
+  /* Hub inner circle swells slightly on hover (A5 contact hub). */
+  .viz-hub-core {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: scale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .viz-hub:hover .viz-hub-core {
+    scale: 1.06;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .viz-node,
+    .viz-hub-core {
+      transition: none;
+    }
+    .viz-node:hover,
+    .viz-hub:hover .viz-hub-core {
+      translate: none;
+      scale: none;
+    }
+    svg:has(.viz-node:hover) .viz-flow,
+    svg:has(.viz-node:hover) .viz-pulse {
+      animation-duration: 0.01ms;
+    }
+  }
+}
+
+/* A4: hovered work card runs its workflow — a pulse wave travels
+   node 1 → 2 → 3 → 4 on a loop while the pointer is over the card.
+   Nodes are fully visible at rest; animation only paints on hover. */
+@layer components {
+  @keyframes node-run {
+    0%,
+    100% {
+      fill: #fff;
+      stroke: var(--ink);
+    }
+    12% {
+      fill: var(--wash);
+      stroke: var(--pine);
+    }
+  }
+
+  @keyframes node-run-accent {
+    0%,
+    100% {
+      fill: var(--pine);
+      stroke: var(--pine-deep);
+    }
+    12% {
+      fill: var(--pine-deep);
+      stroke: var(--pine);
+    }
+  }
+
+  [data-run-card]:hover svg > g:nth-of-type(1) .flow-node {
+    animation: node-run 0.96s ease-in-out 0s infinite;
+  }
+
+  [data-run-card]:hover svg > g:nth-of-type(2) .flow-node-accent {
+    animation: node-run-accent 0.96s ease-in-out 0.24s infinite;
+  }
+
+  [data-run-card]:hover svg > g:nth-of-type(3) .flow-node {
+    animation: node-run 0.96s ease-in-out 0.48s infinite;
+  }
+
+  [data-run-card]:hover svg > g:nth-of-type(4) .flow-node {
+    animation: node-run 0.96s ease-in-out 0.72s infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-run-card]:hover svg > g rect {
+      animation: none;
+    }
+  }
+}
+

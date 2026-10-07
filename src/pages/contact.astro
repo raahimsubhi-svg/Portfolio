@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import ContactForm from "../components/ContactForm";
+import ContactFlowGraphic from "../components/ContactFlowGraphic.astro";
+---
+
+<Base
+  title="Contact - Raahim"
+  description="Start a project with Raahim. Tell me about the bottleneck and I reply within one working day."
+>
+  <section
+    aria-labelledby="contact-title"
+    class="container-page pt-8 pb-16 md:pt-12 md:pb-24"
+  >
+    <div class="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+      <div class="lg:pt-8">
+        <h1
+          id="contact-title"
+          class="font-display text-4xl font-bold tracking-tight text-balance md:text-5xl"
+          data-animate
+        >
+          Let's connect
+        </h1>
+        <div class="mt-4 max-w-[52ch]" data-animate>
+          <p class="text-lg leading-relaxed text-ink-soft md:text-xl">
+            Let's Automate Something Useful.
+          </p>
+          <p class="mt-3 text-base leading-relaxed text-ink-soft">
+            Have a repetitive process, disconnected systems, or a business
+            workflow that could work better?
+          </p>
+          <p class="mt-3 text-base leading-relaxed text-ink-soft">
+            Tell me what you're trying to solve.
+          </p>
+        </div>
+        <div class="mt-8 max-w-[420px]" data-animate>
+          <div class="card rounded-2xl p-4 sm:p-5">
+            <ContactFlowGraphic />
+          </div>
+        </div>
+      </div>
+      <div data-animate>
+        <ContactForm client:load />
+      </div>
+    </div>
+  </section>
+</Base>

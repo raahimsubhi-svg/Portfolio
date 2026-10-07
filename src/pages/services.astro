@@ -1,0 +1,606 @@
+---
+import Base from "../layouts/Base.astro";
+import ServiceLogo from "../components/ServiceLogo.astro";
+import HeroSystemGraphic from "../components/HeroSystemGraphic.astro";
+import VantaNet from "../components/VantaNet";
+import {
+  ArrowRight,
+  MagnifyingGlass,
+  PencilSimple,
+  Gear,
+  Flask,
+  RocketLaunch,
+} from "@phosphor-icons/react";
+
+const services = [
+  {
+    n: "01",
+    kind: "process",
+    title: "Business Process Automation",
+    desc: "Automate repetitive business operations from end to end.",
+    items: [
+      "Order processing",
+      "Inventory updates",
+      "Invoice workflows",
+      "Reconciliation",
+      "Reporting",
+      "Notifications",
+      "Approvals",
+      "Data entry",
+      "CRM workflows",
+      "Scheduled processes",
+    ],
+    positioning:
+      "I turn manual business processes into automated workflows that run reliably without constant human involvement.",
+  },
+  {
+    n: "02",
+    kind: "ai",
+    title: "AI Automation",
+    desc: "Use AI where human-like reasoning, classification, extraction, or generation is actually useful.",
+    items: [
+      "AI document processing",
+      "Lead qualification",
+      "Customer support",
+      "Data classification",
+      "Content processing",
+      "Research workflows",
+      "AI-powered decision support",
+      "Intelligent routing",
+    ],
+    positioning:
+      "I add AI to workflows where it provides a real advantage, instead of forcing AI into every process.",
+  },
+  {
+    n: "03",
+    kind: "agents",
+    title: "AI Agents",
+    desc: "Build systems that can perform multi-step tasks using tools and business data.",
+    items: [
+      "Research agents",
+      "Customer service agents",
+      "Internal assistants",
+      "Sales agents",
+      "Data analysis agents",
+      "Task-execution agents",
+    ],
+    positioning: "",
+  },
+  {
+    n: "04",
+    kind: "integration",
+    title: "System & API Integration",
+    desc: "Connect the software a business already uses.",
+    items: [
+      "Shopify",
+      "Daraz",
+      "CRMs",
+      "Google Sheets",
+      "Databases",
+      "Payment systems",
+      "Accounting systems",
+      "REST APIs",
+      "Webhooks",
+      "MCP",
+    ],
+    positioning:
+      "I connect disconnected systems so information moves automatically between them.",
+  },
+  {
+    n: "05",
+    kind: "data",
+    title: "Data Automation",
+    desc: "Automate the movement and processing of business data.",
+    items: [
+      "CSV/Excel processing",
+      "Data cleaning",
+      "Data transformation",
+      "Database synchronization",
+      "Automated reports",
+      "Data validation",
+      "Import/export workflows",
+      "Reconciliation systems",
+    ],
+    positioning: "",
+  },
+  {
+    n: "06",
+    kind: "custom",
+    title: "Custom Automation Systems",
+    desc: "For processes that don't fit into a predefined category.",
+    items: [],
+    positioning:
+      "Every business has processes that are specific to them. I design custom automation around the way your business actually operates.",
+  },
+] as const;
+
+const withoutAi = ["Order", "API", "Database", "Inventory", "Notification"];
+const withAi = ["Document", "AI Extraction", "Validation", "Database", "Workflow"];
+const copies = [0, 1];
+
+const steps = [
+  {
+    icon: MagnifyingGlass,
+    name: "Understand",
+    text: "I map the existing process and identify what is actually worth automating.",
+  },
+  {
+    icon: PencilSimple,
+    name: "Design",
+    text: "I design the workflow, integrations, data flow, and automation logic.",
+  },
+  {
+    icon: Gear,
+    name: "Build",
+    text: "I develop and connect the required systems.",
+  },
+  {
+    icon: Flask,
+    name: "Test",
+    text: "I test the workflow against normal cases and failures.",
+  },
+  {
+    icon: RocketLaunch,
+    name: "Deploy",
+    text: "I put the automation into production and document how it works.",
+  },
+];
+---
+
+<Base
+  title="Services - Raahim"
+  description="Business process automation, AI automation, AI agents, system integration, and data automation from Raahim."
+>
+  <section
+    aria-labelledby="services-hero-title"
+    class="band-wash dot-grid relative overflow-hidden"
+  >
+    <VantaNet client:only="react" />
+    <div class="container-page hero-layer relative py-9 md:py-11">
+      <div class="grid items-center gap-7 lg:grid-cols-2 lg:gap-8">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">
+            Services
+          </p>
+          <h1
+            id="services-hero-title"
+            class="font-display mt-4 text-4xl font-bold leading-none tracking-tight text-balance md:text-5xl lg:text-[3.4rem]"
+          >
+            Automation Systems Built for Real Business
+          </h1>
+          <p class="mt-4 max-w-[54ch] text-base leading-relaxed text-ink-soft">
+            I design and build business automations, AI-powered workflows,
+            integrations, and custom systems that reduce manual work and
+            connect your operations.
+          </p>
+        </div>
+        <div class="mx-auto w-full max-w-[380px]">
+          <div class="card rounded-2xl p-3 sm:p-4">
+            <HeroSystemGraphic />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-hs-section aria-label="Service cards" class="pt-8 md:pt-10">
+    <div
+      data-hs-viewport
+      class="no-scrollbar snap-x snap-mandatory overflow-x-auto"
+    >
+      <div data-hs-track class="flex w-max pt-8 pb-2">
+        {
+          copies.map((copy) => (
+            <div
+              data-hs-set
+              class="flex gap-5 px-3 md:gap-6"
+              aria-hidden={copy === 1 ? "true" : undefined}
+            >
+              {services.map((s) => (
+                <article
+                  data-hs-card
+                  class="card relative flex w-[85vw] max-w-[420px] shrink-0 snap-start flex-col p-5 md:w-[500px] lg:w-[540px]"
+                >
+                  <div class="flex items-center gap-3.5">
+                    <ServiceLogo kind={s.kind} />
+                    <div class="min-w-0">
+                      <h2 class="font-display text-lg font-bold leading-snug md:text-xl">
+                        {s.title}
+                      </h2>
+                    </div>
+                  </div>
+                  <p class="mt-4 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+                  {s.items.length > 0 && (
+                    <ul class="mt-3 flex flex-wrap gap-1">
+                      {s.items.map((item) => (
+                        <li class="rounded-full border border-line bg-wash px-2 py-0.5 text-[0.7rem] font-medium text-ink-soft">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {s.positioning ? (
+                    <div class="mt-auto border-t border-line pt-2.5">
+                      <p class="text-[0.65rem] font-semibold uppercase tracking-widest text-ink-mute">
+                        Positioning
+                      </p>
+                      <p class="mt-1 text-sm leading-relaxed text-ink-soft">
+                        {s.positioning}
+                      </p>
+                    </div>
+                  ) : (
+                    <div class="mt-auto" />
+                  )}
+                </article>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="container-page mt-4">
+      <div class="h-0.5 overflow-hidden rounded-full bg-line">
+        <div
+          data-hs-progress
+          class="h-full origin-left bg-pine"
+          style="transform: scaleX(0)"
+        >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ai-choice-title" class="container-page mt-16 md:mt-24">
+    <div class="max-w-[70ch]">
+      <h2
+        id="ai-choice-title"
+        class="font-display text-3xl font-bold tracking-tight text-balance md:text-4xl"
+      >
+        AI when it helps. Automation when it doesn't.
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-ink-soft">
+        Not every business problem needs AI. Some processes are better handled
+        with straightforward automation, APIs, databases, and business rules. I
+        use AI where it adds value and traditional automation where it is the
+        better solution.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4">
+      <div class="card-wash rounded-2xl p-5 md:p-6">
+        <h3 class="font-display text-lg font-bold">Without AI</h3>
+        <ol class="mt-4 flex flex-wrap items-center gap-2 md:gap-2.5">
+          {
+            withoutAi.map((step, i) => (
+              <li class="flex items-center gap-2 md:gap-2.5" data-animate>
+                <span class="stat-chip">{step}</span>
+                {i < withoutAi.length - 1 && (
+                  <ArrowRight
+                    size={16}
+                    aria-hidden="true"
+                    className="shrink-0 text-ink-mute"
+                  />
+                )}
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <div class="card-dark rounded-2xl p-5 md:p-6">
+        <h3 class="font-display text-lg font-bold text-white">With AI</h3>
+        <ol class="mt-4 flex flex-wrap items-center gap-2 md:gap-2.5">
+          {
+            withAi.map((step, i) => (
+              <li class="flex items-center gap-2 md:gap-2.5" data-animate>
+                <span class="stat-chip-dark">{step}</span>
+                {i < withAi.length - 1 && (
+                  <ArrowRight
+                    size={16}
+                    aria-hidden="true"
+                    className="shrink-0 text-white/60"
+                  />
+                )}
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="how-title" class="container-page mt-16 pb-16 md:mt-24 md:pb-24">
+    <div class="band-wash dot-grid rounded-2xl p-6 md:p-10" data-parallax>
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">
+        Process
+      </p>
+      <h2
+        id="how-title"
+        class="font-display mt-3 text-3xl font-bold tracking-tight md:text-4xl"
+      >
+        How I work
+      </h2>
+      <p class="mt-3 max-w-[60ch] text-base leading-relaxed text-ink-soft">
+        A plain path from first look to steady runs.
+      </p>
+
+      <div class="relative mt-10">
+        <span
+          aria-hidden="true"
+          class="absolute left-0 right-0 top-5 hidden h-0.5 bg-line lg:block"
+          data-draw
+        ></span>
+        <ol class="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+          {
+            steps.map((s, i) => (
+              <li data-animate>
+                <div class="flex items-center gap-3">
+                  <span
+                    aria-hidden="true"
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-pine text-white shadow-sm"
+                  >
+                    <s.icon size={20} weight="regular" />
+                  </span>
+                  <div>
+                    <p class="text-[0.65rem] font-semibold uppercase tracking-widest text-ink-mute">
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <p class="font-display text-lg font-bold leading-tight">
+                      {s.name}
+                    </p>
+                  </div>
+                </div>
+                <p class="mt-3 text-sm leading-relaxed text-ink-soft">{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import gsap from "gsap";
+
+  const section = document.querySelector<HTMLElement>("[data-hs-section]");
+  const viewport = document.querySelector<HTMLElement>("[data-hs-viewport]");
+  const track = document.querySelector<HTMLElement>("[data-hs-track]");
+  const bar = document.querySelector<HTMLElement>("[data-hs-progress]");
+
+  if (section && viewport && track) {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cards = Array.from(track.querySelectorAll<HTMLElement>("[data-hs-card]"));
+    const sets = track.querySelectorAll<HTMLElement>("[data-hs-set]");
+    const setW = () => sets[0]?.offsetWidth || 1;
+
+    let W = setW();
+    let current = 0;
+    let target = 0;
+    let raf = 0;
+    let lastFocus = Number.NaN;
+    let desktop = false;
+    let prevFocusIdx = -1;
+    // Per-card pop weight (1 = center, 0 = edge), refreshed by
+    // applyFocus; the cursor tilt uses it so side cards stay flat.
+    let pops = cards.map(() => 0);
+
+    // Smooth "pop" setters: center card lifts and scales, sides fade.
+    const setters = reduced
+      ? []
+      : cards.map((c) => ({
+          o: gsap.quickTo(c, "opacity", { duration: 0.35, ease: "power2.out" }),
+          s: gsap.quickTo(c, "scale", { duration: 0.35, ease: "power2.out" }),
+          y: gsap.quickTo(c, "y", { duration: 0.35, ease: "power2.out" }),
+          r: gsap.quickTo(c, "rotation", { duration: 0.5, ease: "power2.out" }),
+        }));
+
+    const wrap = (v: number) => ((v % W) + W) % W;
+
+    const setBar = (p: number) => {
+      if (bar) bar.style.transform = `scaleX(${Math.min(1, Math.max(0, p))})`;
+    };
+
+    // Rect-based measurement: scale/translate transforms don't move an
+    // element's visual center, so this stays correct no matter what the
+    // focus tweens are doing (offsetLeft depended on offsetParent).
+    const nearestCard = () => {
+      const vw = viewport.clientWidth;
+      const vRect = viewport.getBoundingClientRect();
+      let bestCx = vw / 2;
+      let bestDist = Infinity;
+      let bestIdx = 0;
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        const cx = r.left + r.width / 2 - vRect.left;
+        const d = Math.abs(cx - vw / 2);
+        if (d < bestDist) {
+          bestDist = d;
+          bestCx = cx;
+          bestIdx = i;
+        }
+      });
+      return { bestCx, bestIdx };
+    };
+
+    const applyFocus = () => {
+      if (reduced) return;
+      lastFocus = current;
+      const vw = viewport.clientWidth;
+      const vRect = viewport.getBoundingClientRect();
+      const fade = vw * 0.66;
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        const cx = r.left + r.width / 2 - vRect.left;
+        const d = Math.abs(cx - vw / 2);
+        if (d < bestDist) {
+          bestDist = d;
+          bestIdx = i;
+        }
+        const f = Math.min(1, d / fade);
+        const pop = 1 - f;
+        pops[i] = pop;
+        setters[i].o(Math.max(0.45, 1 - 0.55 * f));
+        setters[i].s(1 + 0.07 * pop * pop);
+        setters[i].y(-12 * pop);
+      });
+      // Elevation class on the center card: pine border + shadow with a
+      // CSS transition, so the "pop" reads even at rest.
+      if (bestIdx !== prevFocusIdx) {
+        if (prevFocusIdx >= 0) cards[prevFocusIdx]?.classList.remove("hs-focus");
+        cards[bestIdx]?.classList.add("hs-focus");
+        prevFocusIdx = bestIdx;
+      }
+    };
+
+    const render = () => {
+      const r = wrap(current);
+      gsap.set(track, { x: -r });
+      setBar(r / W);
+    };
+
+    // Carousel snap: once momentum settles, ease to the position where
+    // the nearest card sits exactly at center — so at rest the center
+    // card always gets the full pop and the sides are fully faded.
+    const snap = () => {
+      if (!desktop || reduced) return false;
+      const vw = viewport.clientWidth;
+      const { bestCx } = nearestCard();
+      const delta = bestCx - vw / 2;
+      if (Math.abs(delta) < 1) return false;
+      target += delta;
+      return true;
+    };
+
+    const tick = () => {
+      current += (target - current) * 0.09;
+      render();
+      if (Math.abs(target - current) > 0.1) {
+        if (Math.abs(current - lastFocus) > 0.3) applyFocus();
+        raf = requestAnimationFrame(tick);
+      } else {
+        current = target;
+        render();
+        if (snap()) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          applyFocus();
+          raf = 0;
+        }
+      }
+    };
+
+    const ensure = () => {
+      if (!raf && !reduced) raf = requestAnimationFrame(tick);
+    };
+
+    const recenter = () => {
+      W = setW();
+      // Start at r = 0, then measure card 0 and shift so it sits
+      // dead-center in the viewport.
+      current = target = 0;
+      render();
+      const vw = viewport.clientWidth;
+      const { bestCx } = nearestCard();
+      const r0 = bestCx - vw / 2;
+      current = target = wrap(r0);
+      render();
+    };
+
+    // Wheel scrolls the strip horizontally ONLY while the cursor is
+    // over this section. Cursor elsewhere = normal page scrolling.
+    section.addEventListener(
+      "wheel",
+      (e: WheelEvent) => {
+        if (!desktop || reduced) return;
+        const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? viewport.clientWidth : 1;
+        const d =
+          Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+        target += d * unit;
+        e.preventDefault();
+        ensure();
+      },
+      { passive: false }
+    );
+
+    // Mobile: native swipe drives the progress bar and focus.
+    viewport.addEventListener(
+      "scroll",
+      () => {
+        if (desktop) return;
+        const max = viewport.scrollWidth - viewport.clientWidth;
+        setBar(max > 0 ? wrap(viewport.scrollLeft) / W : 0);
+        applyFocus();
+      },
+      { passive: true }
+    );
+
+    if (!reduced) {
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 768px)", () => {
+        desktop = true;
+        viewport.style.overflowX = "hidden";
+        recenter();
+        render();
+        applyFocus();
+
+        // A6: cursor tilt. The center card leans toward the pointer
+        // (max ±3°), weighted by its pop so edge cards stay flat.
+        const finePointer = window.matchMedia("(pointer: fine)").matches;
+        const onTilt = (e: PointerEvent) => {
+          const vr = viewport.getBoundingClientRect();
+          const nx = (((e.clientX - vr.left) / vr.width) * 2 - 1) * 3;
+          setters.forEach((s, i) =>
+            s.r(Math.max(-3, Math.min(3, nx)) * pops[i])
+          );
+        };
+        const onTiltLeave = () => setters.forEach((s) => s.r(0));
+        if (finePointer) {
+          viewport.addEventListener("pointermove", onTilt, { passive: true });
+          viewport.addEventListener("pointerleave", onTiltLeave, {
+            passive: true,
+          });
+        }
+
+        const onResize = () => {
+          recenter();
+          render();
+          applyFocus();
+        };
+        // Webfonts can change card widths after first layout; settle
+        // again once everything has loaded.
+        const onLoad = () => {
+          recenter();
+          render();
+          applyFocus();
+        };
+        if (document.readyState === "complete") onLoad();
+        else window.addEventListener("load", onLoad, { once: true });
+        window.addEventListener("resize", onResize);
+        return () => {
+          desktop = false;
+          if (raf) {
+            cancelAnimationFrame(raf);
+            raf = 0;
+          }
+          window.removeEventListener("resize", onResize);
+          window.removeEventListener("load", onLoad);
+          viewport.removeEventListener("pointermove", onTilt);
+          viewport.removeEventListener("pointerleave", onTiltLeave);
+          gsap.set(track, { clearProps: "transform" });
+          cards.forEach((c) => {
+            gsap.set(c, { clearProps: "opacity,transform" });
+            c.classList.remove("hs-focus");
+          });
+          prevFocusIdx = -1;
+          viewport.style.overflowX = "";
+          setBar(0);
+        };
+      });
+    } else {
+      applyFocus();
+    }
+  }
+</script>

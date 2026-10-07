@@ -1,0 +1,120 @@
+---
+// Compact service-card logo marks. Same visual language as the old
+// wide ServiceVisual diagrams (wash ground, line borders, pine
+// accents, viz-flow / viz-pulse life) distilled into a 44px chip.
+interface Props {
+  kind: "process" | "ai" | "agents" | "integration" | "data" | "custom";
+}
+const { kind } = Astro.props;
+---
+
+<svg viewBox="0 0 44 44" class="h-11 w-11 shrink-0" aria-hidden="true">
+  <rect x="0.75" y="0.75" width="42.5" height="42.5" rx="11" fill="#EDF3EF" stroke="#E4E8E5" stroke-width="1.5" />
+
+  {
+    kind === "process" && (
+      <g>
+        <rect x="8" y="15" width="11" height="14" rx="3.5" fill="#fff" stroke="#E4E8E5" stroke-width="1.5" />
+        <line x1="20" y1="22" x2="24.5" y2="22" stroke="#0E7C5B" stroke-width="2" class="viz-flow" stroke-dasharray="3 3" />
+        <rect x="25" y="15" width="11" height="14" rx="3.5" fill="#0E7C5B" />
+      </g>
+    )
+  }
+
+  {
+    kind === "ai" && (
+      <path
+        d="M22 9 L24.8 19.2 L35 22 L24.8 24.8 L22 35 L19.2 24.8 L9 22 L19.2 19.2 Z"
+        fill="#0E7C5B"
+      />
+    )
+  }
+
+  {
+    kind === "agents" && (
+      <g>
+        {[
+          [13, 14],
+          [31, 14],
+          [13, 30],
+          [31, 30],
+        ].map(([sx, sy]) => (
+          <line
+            x1="22"
+            y1="22"
+            x2={sx}
+            y2={sy}
+            stroke="#17201D"
+            stroke-opacity="0.22"
+            stroke-width="1.5"
+          />
+        ))}
+        <circle cx="22" cy="22" r="5.5" fill="#0E7C5B" />
+        {[
+          [13, 14],
+          [31, 14],
+          [13, 30],
+          [31, 30],
+        ].map(([sx, sy], i) => (
+          <circle
+            cx={sx}
+            cy={sy}
+            r="3.5"
+            fill="#fff"
+            stroke="#0E7C5B"
+            stroke-width="1.5"
+            class="viz-pulse"
+            style={`animation-delay:${i * 0.5}s`}
+          />
+        ))}
+      </g>
+    )
+  }
+
+  {
+    kind === "integration" && (
+      <g>
+        <line x1="17" y1="27" x2="27" y2="17" stroke="#0E7C5B" stroke-width="2" class="viz-flow" stroke-dasharray="3 3" />
+        <rect x="8" y="8" width="13" height="13" rx="4.5" fill="#fff" stroke="#E4E8E5" stroke-width="1.5" />
+        <rect x="23" y="23" width="13" height="13" rx="4.5" fill="#0E7C5B" />
+      </g>
+    )
+  }
+
+  {
+    kind === "data" && (
+      <g>
+        <rect x="7" y="6" width="24" height="22" rx="4" fill="#EDF3EF" stroke="#0E7C5B" stroke-width="1.5" />
+        <rect x="7" y="6" width="24" height="5" rx="4" fill="#0E7C5B" />
+        <rect x="7" y="9" width="24" height="2" fill="#0E7C5B" />
+        <rect x="9" y="13" width="20" height="5" rx="1.5" fill="#0E7C5B" fill-opacity="0.35" />
+        <line x1="17" y1="6" x2="17" y2="28" stroke="#0E7C5B" stroke-opacity="0.35" />
+        <line x1="25" y1="6" x2="25" y2="28" stroke="#0E7C5B" stroke-opacity="0.35" />
+        <line x1="7" y1="11" x2="31" y2="11" stroke="#0E7C5B" stroke-opacity="0.35" />
+        <line x1="7" y1="23" x2="31" y2="23" stroke="#0E7C5B" stroke-opacity="0.35" />
+        <line x1="8" y1="35.5" x2="30" y2="35.5" stroke="#0E7C5B" stroke-width="2" class="viz-flow" />
+        <path d="M30 32.5 L36 35.5 L30 38.5" fill="none" stroke="#0E7C5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="8" cy="35.5" r="2.5" fill="#0E7C5B" class="viz-pulse" />
+      </g>
+    )
+  }
+
+  {
+    kind === "custom" && (
+      <g>
+        <rect
+          x="8"
+          y="9"
+          width="18"
+          height="18"
+          rx="5.5"
+          fill="none"
+          stroke="#0E7C5B"
+          stroke-width="2"
+          stroke-dasharray="4 4"
+        />
+        <rect x="21" y="21" width="15" height="15" rx="5" fill="#0E7C5B" />
+      </g>
+    )
+  }
+</svg>

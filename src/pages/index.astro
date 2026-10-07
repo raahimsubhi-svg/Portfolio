@@ -1,0 +1,39 @@
+---
+import Base from "../layouts/Base.astro";
+import VantaHero from "../components/VantaHero";
+---
+
+<Base
+  title="Raahim - AI automation engineer"
+  description="Raahim builds AI helpers and workflow automation that cut manual work for support, sales, and operations teams."
+>
+  <section aria-labelledby="hero-title" class="band-wash dot-grid relative overflow-hidden">
+    <VantaHero client:only="react" />
+    <div class="container-page hero-layer relative py-12 text-center md:py-20">
+      <div class="mx-auto max-w-[860px]">
+        <div class="flex flex-col items-center justify-center">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">
+            AI automation engineer
+          </p>
+          <h1
+            id="hero-title"
+            class="font-display mt-4 text-4xl font-bold leading-none tracking-tight md:text-5xl lg:text-6xl"
+          >
+            I build systems that fix<br class="hidden md:inline" />
+            real business bottlenecks<br class="hidden md:inline" />
+            and Removes Manual Work.
+          </h1>
+          <p class="mt-4 max-w-[52ch] text-base leading-relaxed text-ink-soft">
+            I design and build AI-powered systems that automate repetitive
+            processes, connect your tools, and turn manual workflows into
+            reliable automated systems.
+          </p>
+          <div class="mt-7 flex flex-wrap justify-center gap-3">
+            <a href="/work" class="btn-primary">View my work</a>
+            <a href="/contact" class="btn-secondary">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

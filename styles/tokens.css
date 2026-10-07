@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #fcfcf9;
+  --ink: #17201d;
+  --ink-soft: #3d4a45;
+  --ink-mute: #5c6a64;
+  --pine: #0e7c5b;
+  --pine-deep: #0a5c44;
+  --line: #e4e8e5;
+  --wash: #edf3ef;
+  --card: #ffffff;
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --radius-small: 8px;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --z-nav: 40;
+  --z-overlay: 50;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
+  --color-pine: var(--pine);
+  --color-pine-deep: var(--pine-deep);
+  --color-line: var(--line);
+  --color-wash: var(--wash);
+  --color-card: var(--card);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+}

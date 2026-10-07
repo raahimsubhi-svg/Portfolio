@@ -1,0 +1,42 @@
+---
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/700.css";
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/500.css";
+import "@fontsource/ibm-plex-sans/600.css";
+import "../../styles/globals.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer.astro";
+import ScrollFx from "../components/ScrollFx";
+import ScrollProgress from "../components/ScrollProgress";
+import DepthFx from "../components/DepthFx";
+
+interface Props {
+  title: string;
+  description: string;
+  hideFooter?: boolean;
+}
+const { title, description, hideFooter = false } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header currentPath={path} client:load />
+    <main id="main"><slot /></main>
+    {!hideFooter && <Footer />}
+    <ScrollFx client:load />
+    <ScrollProgress client:load />
+    <DepthFx client:load />
+  </body>
+</html>

@@ -1,0 +1,150 @@
+---
+import { site } from "../lib/site";
+import {
+  EnvelopeSimple,
+  GithubLogo,
+  InstagramLogo,
+  LinkedinLogo,
+} from "@phosphor-icons/react";
+
+const mailto = `https://mail.google.com/mail/?view=cm&fs=1&to=${site.emailDisplay}`;
+---
+
+<footer>
+  <section aria-labelledby="footer-connect-title" class="bg-ink text-white">
+    <div
+      class="container-page flex flex-col gap-5 py-9 md:py-11 lg:flex-row lg:items-center lg:justify-between"
+    >
+      <div class="max-w-xl" data-animate>
+        <h2
+          id="footer-connect-title"
+          class="font-display text-xl font-semibold tracking-tight sm:text-2xl"
+        >
+          Raahim
+        </h2>
+        <p class="mt-1.5 max-w-md text-sm leading-relaxed text-white/75">
+          I build automation systems that reduce manual work, connect business
+          systems, and solve real operational problems.
+        </p>
+      </div>
+      <ul class="flex items-center gap-3" data-animate aria-label="Contact links">
+        <li>
+          <a
+            href={mailto}
+            target="_blank"
+            rel="noopener"
+            class="footer-dot"
+            aria-label="Email Raahim"
+          >
+            <EnvelopeSimple size={22} aria-hidden="true" />
+            <span class="footer-tip">{site.emailDisplay}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-dot"
+            aria-label="Raahim on Instagram"
+          >
+            <InstagramLogo size={22} aria-hidden="true" />
+            <span class="footer-tip">raahim.ai</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-dot"
+            aria-label="Raahim on LinkedIn"
+          >
+            <LinkedinLogo size={22} aria-hidden="true" />
+            <span class="footer-tip">Raahim</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href={site.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-dot"
+            aria-label="Raahim on GitHub"
+          >
+            <GithubLogo size={22} aria-hidden="true" />
+            <span class="footer-tip">raahimsubhi-svg</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</footer>
+
+<style>
+  .footer-dot {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    border: 1px solid rgb(255 255 255 / 0.18);
+    background: rgb(255 255 255 / 0.06);
+    color: #fff;
+    transition:
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .footer-dot:hover,
+  .footer-dot:focus-visible {
+    border-color: rgb(255 255 255 / 0.45);
+    background: rgb(255 255 255 / 0.12);
+    transform: translateY(-2px);
+  }
+
+  /* Hover/focus tooltip with the handle. Left-aligned to its icon so it
+     never overflows the viewport on small screens. Fails visible: if the
+     CSS never loads, the handle simply shows. */
+  .footer-tip {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 10;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    background: #fff;
+    color: #17201d;
+    border: 1px solid #e4e8e5;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.18);
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .footer-dot:hover .footer-tip,
+  .footer-dot:focus-visible .footer-tip {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-dot,
+    .footer-tip {
+      transition: none;
+    }
+    .footer-dot:hover,
+    .footer-dot:focus-visible {
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,170 @@
+@import "./tokens.css";
+@import "./graphics.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--pine);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 3px solid var(--pine);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 60;
+    background: var(--ink);
+    color: #fff;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    white-space: nowrap;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--pine);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: var(--pine-deep);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px rgb(23 32 29 / 0.05);
+  }
+
+  /* Explicit tint variants. Use these instead of stacking
+     bg-ink or bg-wash utilities on .card. */
+  .card-dark {
+    background: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-card);
+    box-shadow: 0 8px 24px rgb(23 32 29 / 0.18);
+    color: #fff;
+  }
+
+  .card-wash {
+    background: var(--wash);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px rgb(23 32 29 / 0.05);
+    color: var(--ink);
+  }
+
+  .flow-line {
+    stroke: var(--line);
+    stroke-width: 2;
+  }
+
+  .flow-line-active {
+    stroke: var(--pine);
+    stroke-width: 2;
+  }
+
+  .flow-node {
+    fill: #fff;
+    stroke: var(--ink);
+    stroke-width: 1.5;
+  }
+
+  .flow-node-accent {
+    fill: var(--pine);
+    stroke: var(--pine-deep);
+  }
+
+  .flow-label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    fill: var(--ink);
+  }
+
+  .flow-label-accent {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    fill: #fff;
+  }
+}
