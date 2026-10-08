@@ -4,11 +4,16 @@ import { site } from "../lib/site";
 import { useMagnetic } from "../lib/useMagnetic";
 
 const SERVICES = [
-  "Business Automation",
-  "AI Automation",
-  "API & System Integration",
-  "Data Automation",
-  "Custom Automation",
+  "AI Customer Service Chatbots",
+  "Automated Email Sorting and Triage",
+  "AI Invoice Processing and Accounts Payable",
+  "Automated Lead Generation and Outreach",
+  "AI Report Generation and Data Analytics",
+  "CRM Synchronization and Data Updates",
+  "Internal Document Processing and OCR",
+  "Automated Employee Onboarding and HR Support",
+  "AI Financial Reconciliation and Compliance Auditing",
+  "Automated Workflow Approval Chains",
   "Not sure yet",
 ];
 

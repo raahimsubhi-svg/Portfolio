@@ -21,12 +21,3 @@ npm run dev       # http://localhost:4321
 npm run build     # static output in dist/
 npm run preview   # serve the production build
 ```
-
-## Notes before launch
-
-- Contact form posts to **Web3Forms** (access key in `src/lib/site.ts` —
-  public by design; submissions email you and appear in the Web3Forms
-  dashboard).
-- Replace placeholders: LinkedIn URL in `src/lib/site.ts`, and the
-  domain in `astro.config.mjs` + `public/robots.txt` (currently
-  `example.com`).
