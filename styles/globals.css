@@ -84,12 +84,12 @@ body {
   }
 
   .btn-primary {
-    background: var(--pine);
+    background: var(--ink);
     color: #fff;
   }
 
   .btn-primary:hover {
-    background: var(--pine-deep);
+    background: var(--ink-soft);
   }
 
   .btn-secondary {
@@ -139,7 +139,7 @@ body {
   }
 
   .flow-line-active {
-    stroke: var(--pine);
+    stroke: var(--azure);
     stroke-width: 2;
   }
 
@@ -150,8 +150,8 @@ body {
   }
 
   .flow-node-accent {
-    fill: var(--pine);
-    stroke: var(--pine-deep);
+    fill: var(--azure-deep);
+    stroke: var(--azure);
   }
 
   .flow-label {

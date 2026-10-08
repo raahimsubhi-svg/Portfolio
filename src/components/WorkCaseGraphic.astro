@@ -9,25 +9,25 @@
 
 <svg viewBox="0 0 400 340" class="h-auto w-full" aria-hidden="true" data-depth-root>
   <!-- connectors (drawn under nodes) -->
-  <g fill="none" stroke="#0E7C5B" stroke-width="2" data-depth="0.2">
+  <g fill="none" stroke="var(--fern)" stroke-width="2" data-depth="0.2">
     <path d="M160,72 C205,84 232,120 258,152" class="viz-flow" />
     <path d="M160,170 L258,170" class="viz-flow" />
     <path d="M160,268 C205,256 232,220 258,188" class="viz-flow" />
   </g>
 
   <!-- relay pulses on the wires -->
-  <circle cx={212} cy={106} r={5} fill="#0E7C5B" class="viz-pulse" data-depth="0.2" />
-  <circle cx={214} cy={170} r={5} fill="#0E7C5B" class="viz-pulse" style="animation-delay:.6s" data-depth="0.2" />
-  <circle cx={212} cy={234} r={5} fill="#0E7C5B" class="viz-pulse" style="animation-delay:1.2s" data-depth="0.2" />
+  <circle cx={212} cy={106} r={5} fill="var(--fern)" class="viz-pulse" data-depth="0.2" />
+  <circle cx={214} cy={170} r={5} fill="var(--fern)" class="viz-pulse" style="animation-delay:.6s" data-depth="0.2" />
+  <circle cx={212} cy={234} r={5} fill="var(--fern)" class="viz-pulse" style="animation-delay:1.2s" data-depth="0.2" />
 
   <!-- rotating dashed ring + outcome hub -->
   <g class="viz-node viz-hub" data-depth="0.6">
-    <circle cx={300} cy={170} r={56} fill="none" stroke="#0E7C5B" stroke-width={1.5} stroke-dasharray="5 9" class="viz-spin" />
-    <circle cx={300} cy={170} r={34} fill="#0E7C5B" class="viz-hub-core" />
+    <circle cx={300} cy={170} r={56} fill="none" stroke="var(--fern)" stroke-width={1.5} stroke-dasharray="5 9" class="viz-spin" />
+    <circle cx={300} cy={170} r={34} fill="var(--pine)" class="viz-hub-core" />
     <path
       d="M286,171 l10,10 l18,-21"
       fill="none"
-      stroke="#FCFCF9"
+      stroke="var(--paper)"
       stroke-width={5}
       stroke-linecap="round"
       stroke-linejoin="round"
@@ -37,18 +37,18 @@
 
   <!-- case cards -->
   <g data-depth="-0.3">
-    <rect x={24} y={44} width={136} height={56} rx={14} fill="#fff" stroke="#E4E8E5" />
-    <circle cx={50} cy={72} r={6} fill="#0E7C5B" />
+    <rect x={24} y={44} width={136} height={56} rx={14} fill="#fff" stroke="var(--line)" />
+    <circle cx={50} cy={72} r={6} fill="var(--pine)" />
     <text x={66} y={77} font-size={13} font-weight={600} fill="#17201d">Case 01</text>
   </g>
   <g data-depth="-0.3">
-    <rect x={24} y={142} width={136} height={56} rx={14} fill="#fff" stroke="#E4E8E5" />
-    <circle cx={50} cy={170} r={6} fill="#0E7C5B" />
+    <rect x={24} y={142} width={136} height={56} rx={14} fill="#fff" stroke="var(--line)" />
+    <circle cx={50} cy={170} r={6} fill="var(--pine)" />
     <text x={66} y={175} font-size={13} font-weight={600} fill="#17201d">Case 02</text>
   </g>
   <g data-depth="-0.3">
-    <rect x={24} y={240} width={136} height={56} rx={14} fill="#fff" stroke="#E4E8E5" />
-    <circle cx={50} cy={268} r={6} fill="#0E7C5B" />
+    <rect x={24} y={240} width={136} height={56} rx={14} fill="#fff" stroke="var(--line)" />
+    <circle cx={50} cy={268} r={6} fill="var(--pine)" />
     <text x={66} y={273} font-size={13} font-weight={600} fill="#17201d">Case 03</text>
   </g>
 </svg>

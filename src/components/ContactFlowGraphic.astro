@@ -10,27 +10,27 @@
 
 <svg viewBox="0 0 400 180" class="h-auto w-full" aria-hidden="true" data-depth-root>
   <!-- connectors (drawn under nodes) -->
-  <g fill="none" stroke="#0E7C5B" stroke-width="2" data-depth="0.2">
+  <g fill="none" stroke="var(--fern)" stroke-width="2" data-depth="0.2">
     <path d="M192,54 C222,42 240,48 258,62" class="viz-flow" />
     <path d="M192,106 C222,116 240,110 258,96" class="viz-flow" />
   </g>
 
   <!-- relay pulses on the wires -->
-  <circle cx={224} cy={50} r={5} fill="#0E7C5B" class="viz-pulse" data-depth="0.2" />
-  <circle cx={224} cy={108} r={5} fill="#0E7C5B" class="viz-pulse" style="animation-delay:.9s" data-depth="0.2" />
+  <circle cx={224} cy={50} r={5} fill="var(--fern)" class="viz-pulse" data-depth="0.2" />
+  <circle cx={224} cy={108} r={5} fill="var(--fern)" class="viz-pulse" style="animation-delay:.9s" data-depth="0.2" />
 
   <!-- message bubble (lines type themselves in on scroll) -->
   <g class="viz-node" data-depth="-0.3">
-    <rect x={24} y={20} width={168} height={108} rx={16} fill="#fff" stroke="#E4E8E5" />
-    <rect x={48} y={46} width={112} height={9} rx={4.5} fill="#0E7C5B" opacity={0.4} data-draw />
-    <rect x={48} y={68} width={96} height={9} rx={4.5} fill="#E4E8E5" data-draw />
-    <rect x={48} y={90} width={72} height={9} rx={4.5} fill="#E4E8E5" data-draw />
+    <rect x={24} y={20} width={168} height={108} rx={16} fill="#fff" stroke="var(--line)" />
+    <rect x={48} y={46} width={112} height={9} rx={4.5} fill="var(--pine)" opacity={0.4} data-draw />
+    <rect x={48} y={68} width={96} height={9} rx={4.5} fill="var(--line)" data-draw />
+    <rect x={48} y={90} width={72} height={9} rx={4.5} fill="var(--line)" data-draw />
   </g>
 
   <!-- rotating dashed ring + reply hub -->
   <g class="viz-node viz-hub" data-depth="0.6">
-    <circle cx={310} cy={78} r={52} fill="none" stroke="#0E7C5B" stroke-width={1.5} stroke-dasharray="5 9" class="viz-spin" />
-    <circle cx={310} cy={78} r={31} fill="#0E7C5B" class="viz-hub-core" />
+    <circle cx={310} cy={78} r={52} fill="none" stroke="var(--fern)" stroke-width={1.5} stroke-dasharray="5 9" class="viz-spin" />
+    <circle cx={310} cy={78} r={31} fill="var(--pine)" class="viz-hub-core" />
     <g fill="none" stroke="#FCFCF9" stroke-width={2.5} stroke-linecap="round" stroke-linejoin="round">
       <rect x={296} y={67} width={28} height={20} rx={3} />
       <path d="M296,69 L310,80 L324,69" />

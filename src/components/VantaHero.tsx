@@ -38,9 +38,9 @@ export default function VantaHero() {
         // cheap. The soft fog hides the lower resolution completely.
         scale: 2.0,
         scaleMobile: 4.0,
-        highlightColor: 0x9dc3b2,
-        midtoneColor: 0xc9dcd3,
-        lowlightColor: 0xedf3ef,
+        highlightColor: 0x9dc3d5,
+        midtoneColor: 0xc9dce7,
+        lowlightColor: 0xedf2f6,
         baseColor: 0xfcfcf9,
         blurFactor: 0.3,
         speed: 0.5,

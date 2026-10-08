@@ -9,7 +9,7 @@
 
 <svg viewBox="0 0 400 340" class="h-auto w-full" aria-hidden="true" data-depth-root>
   <!-- connectors (drawn under nodes) -->
-  <g fill="none" stroke="#0E7C5B" stroke-width="2" data-depth="0.2">
+  <g fill="none" stroke="var(--fern)" stroke-width="2" data-depth="0.2">
     <path d="M178,148 C140,120 110,95 84,68" class="viz-flow" />
     <path d="M222,148 C260,120 290,95 316,68" class="viz-flow" />
     <path d="M178,192 C140,220 110,245 84,272" class="viz-flow" />
@@ -17,15 +17,15 @@
   </g>
 
   <!-- relay pulses on the wires -->
-  <circle cx={128} cy={106} r={5} fill="#0E7C5B" class="viz-pulse" data-depth="0.2" />
-  <circle cx={272} cy={106} r={5} fill="#0E7C5B" class="viz-pulse" style="animation-delay:.6s" data-depth="0.2" />
-  <circle cx={128} cy={234} r={5} fill="#0E7C5B" class="viz-pulse" style="animation-delay:1.2s" data-depth="0.2" />
-  <circle cx={272} cy={234} r={5} fill="#0E7C5B" class="viz-pulse" style="animation-delay:1.8s" data-depth="0.2" />
+  <circle cx={128} cy={106} r={5} fill="var(--fern)" class="viz-pulse" data-depth="0.2" />
+  <circle cx={272} cy={106} r={5} fill="var(--fern)" class="viz-pulse" style="animation-delay:.6s" data-depth="0.2" />
+  <circle cx={128} cy={234} r={5} fill="var(--fern)" class="viz-pulse" style="animation-delay:1.2s" data-depth="0.2" />
+  <circle cx={272} cy={234} r={5} fill="var(--fern)" class="viz-pulse" style="animation-delay:1.8s" data-depth="0.2" />
 
   <!-- rotating dashed ring + hub -->
   <g class="viz-node viz-hub" data-depth="0.6">
-    <circle cx={200} cy={170} r={58} fill="none" stroke="#0E7C5B" stroke-width={1.5} stroke-dasharray="5 9" class="viz-spin" />
-    <circle cx={200} cy={170} r={36} fill="#0E7C5B" class="viz-hub-core" />
+    <circle cx={200} cy={170} r={58} fill="none" stroke="var(--fern)" stroke-width={1.5} stroke-dasharray="5 9" class="viz-spin" />
+    <circle cx={200} cy={170} r={36} fill="var(--pine)" class="viz-hub-core" />
     <path
       d="M204,148 L182,178 L197,178 L193,202 L218,168 L203,168 Z"
       fill="#FCFCF9"
@@ -34,23 +34,23 @@
 
   <!-- node pills -->
   <g class="viz-node" data-depth="-0.3">
-    <rect x={24} y={34} width={120} height={34} rx={17} fill="#fff" stroke="#E4E8E5" />
-    <circle cx={44} cy={51} r={4} fill="#0E7C5B" />
+    <rect x={24} y={34} width={120} height={34} rx={17} fill="#fff" stroke="var(--line)" />
+    <circle cx={44} cy={51} r={4} fill="var(--pine)" />
     <text x={58} y={56} font-size={13} font-weight={600} fill="#17201d">Trigger</text>
   </g>
   <g class="viz-node" data-depth="-0.3">
-    <rect x={256} y={34} width={120} height={34} rx={17} fill="#fff" stroke="#E4E8E5" />
-    <circle cx={276} cy={51} r={4} fill="#0E7C5B" />
+    <rect x={256} y={34} width={120} height={34} rx={17} fill="#fff" stroke="var(--line)" />
+    <circle cx={276} cy={51} r={4} fill="var(--pine)" />
     <text x={290} y={56} font-size={13} font-weight={600} fill="#17201d">AI step</text>
   </g>
   <g class="viz-node" data-depth="-0.3">
-    <rect x={24} y={272} width={120} height={34} rx={17} fill="#fff" stroke="#E4E8E5" />
-    <circle cx={44} cy={289} r={4} fill="#0E7C5B" />
+    <rect x={24} y={272} width={120} height={34} rx={17} fill="#fff" stroke="var(--line)" />
+    <circle cx={44} cy={289} r={4} fill="var(--pine)" />
     <text x={58} y={294} font-size={13} font-weight={600} fill="#17201d">Database</text>
   </g>
   <g class="viz-node" data-depth="-0.3">
-    <rect x={256} y={272} width={120} height={34} rx={17} fill="#fff" stroke="#E4E8E5" />
-    <circle cx={276} cy={289} r={4} fill="#0E7C5B" />
+    <rect x={256} y={272} width={120} height={34} rx={17} fill="#fff" stroke="var(--line)" />
+    <circle cx={276} cy={289} r={4} fill="var(--pine)" />
     <text x={290} y={294} font-size={13} font-weight={600} fill="#17201d">Notify</text>
   </g>
 </svg>

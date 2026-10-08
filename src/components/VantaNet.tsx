@@ -33,7 +33,7 @@ export default function VantaNet() {
         minHeight: 200,
         minWidth: 200,
         backgroundColor: 0xfcfcf9,
-        color: 0x0e7c5b,
+        color: 0x1584ab,
         points: 11,
         maxDistance: 20,
         spacing: 24,

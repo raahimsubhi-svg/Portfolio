@@ -22,14 +22,14 @@ const { kind } = Astro.props;
 ---
 
 <svg viewBox="0 0 44 44" class="h-11 w-11 shrink-0" aria-hidden="true">
-  <rect x="0.75" y="0.75" width="42.5" height="42.5" rx="11" fill="#EDF3EF" stroke="#E4E8E5" stroke-width="1.5" />
+  <rect x="0.75" y="0.75" width="42.5" height="42.5" rx="11" fill="var(--wash)" stroke="var(--line)" stroke-width="1.5" />
 
   {
     kind === "process" && (
       <g>
-        <rect x="8" y="15" width="11" height="14" rx="3.5" fill="#fff" stroke="#E4E8E5" stroke-width="1.5" />
-        <line x1="20" y1="22" x2="24.5" y2="22" stroke="#0E7C5B" stroke-width="2" class="viz-flow" stroke-dasharray="3 3" />
-        <rect x="25" y="15" width="11" height="14" rx="3.5" fill="#0E7C5B" />
+        <rect x="8" y="15" width="11" height="14" rx="3.5" fill="#fff" stroke="var(--line)" stroke-width="1.5" />
+        <line x1="20" y1="22" x2="24.5" y2="22" stroke="var(--fern)" stroke-width="2" class="viz-flow" stroke-dasharray="3 3" />
+        <rect x="25" y="15" width="11" height="14" rx="3.5" fill="var(--pine)" />
       </g>
     )
   }
@@ -38,7 +38,7 @@ const { kind } = Astro.props;
     kind === "ai" && (
       <path
         d="M22 9 L24.8 19.2 L35 22 L24.8 24.8 L22 35 L19.2 24.8 L9 22 L19.2 19.2 Z"
-        fill="#0E7C5B"
+        fill="var(--pine)"
       />
     )
   }
@@ -62,7 +62,7 @@ const { kind } = Astro.props;
             stroke-width="1.5"
           />
         ))}
-        <circle cx="22" cy="22" r="5.5" fill="#0E7C5B" />
+        <circle cx="22" cy="22" r="5.5" fill="var(--pine)" />
         {[
           [13, 14],
           [31, 14],
@@ -74,7 +74,7 @@ const { kind } = Astro.props;
             cy={sy}
             r="3.5"
             fill="#fff"
-            stroke="#0E7C5B"
+            stroke="var(--fern)"
             stroke-width="1.5"
             class="viz-pulse"
             style={`animation-delay:${i * 0.5}s`}
@@ -87,9 +87,9 @@ const { kind } = Astro.props;
   {
     kind === "integration" && (
       <g>
-        <line x1="17" y1="27" x2="27" y2="17" stroke="#0E7C5B" stroke-width="2" class="viz-flow" stroke-dasharray="3 3" />
-        <rect x="8" y="8" width="13" height="13" rx="4.5" fill="#fff" stroke="#E4E8E5" stroke-width="1.5" />
-        <rect x="23" y="23" width="13" height="13" rx="4.5" fill="#0E7C5B" />
+        <line x1="17" y1="27" x2="27" y2="17" stroke="var(--fern)" stroke-width="2" class="viz-flow" stroke-dasharray="3 3" />
+        <rect x="8" y="8" width="13" height="13" rx="4.5" fill="#fff" stroke="var(--line)" stroke-width="1.5" />
+        <rect x="23" y="23" width="13" height="13" rx="4.5" fill="var(--pine)" />
       </g>
     )
   }
@@ -97,17 +97,17 @@ const { kind } = Astro.props;
   {
     kind === "data" && (
       <g>
-        <rect x="7" y="6" width="24" height="22" rx="4" fill="#EDF3EF" stroke="#0E7C5B" stroke-width="1.5" />
-        <rect x="7" y="6" width="24" height="5" rx="4" fill="#0E7C5B" />
-        <rect x="7" y="9" width="24" height="2" fill="#0E7C5B" />
-        <rect x="9" y="13" width="20" height="5" rx="1.5" fill="#0E7C5B" fill-opacity="0.35" />
-        <line x1="17" y1="6" x2="17" y2="28" stroke="#0E7C5B" stroke-opacity="0.35" />
-        <line x1="25" y1="6" x2="25" y2="28" stroke="#0E7C5B" stroke-opacity="0.35" />
-        <line x1="7" y1="11" x2="31" y2="11" stroke="#0E7C5B" stroke-opacity="0.35" />
-        <line x1="7" y1="23" x2="31" y2="23" stroke="#0E7C5B" stroke-opacity="0.35" />
-        <line x1="8" y1="35.5" x2="30" y2="35.5" stroke="#0E7C5B" stroke-width="2" class="viz-flow" />
-        <path d="M30 32.5 L36 35.5 L30 38.5" fill="none" stroke="#0E7C5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        <circle cx="8" cy="35.5" r="2.5" fill="#0E7C5B" class="viz-pulse" />
+        <rect x="7" y="6" width="24" height="22" rx="4" fill="var(--wash)" stroke="var(--pine)" stroke-width="1.5" />
+        <rect x="7" y="6" width="24" height="5" rx="4" fill="var(--pine)" />
+        <rect x="7" y="9" width="24" height="2" fill="var(--pine)" />
+        <rect x="9" y="13" width="20" height="5" rx="1.5" fill="var(--pine)" fill-opacity="0.35" />
+        <line x1="17" y1="6" x2="17" y2="28" stroke="var(--pine)" stroke-opacity="0.35" />
+        <line x1="25" y1="6" x2="25" y2="28" stroke="var(--pine)" stroke-opacity="0.35" />
+        <line x1="7" y1="11" x2="31" y2="11" stroke="var(--pine)" stroke-opacity="0.35" />
+        <line x1="7" y1="23" x2="31" y2="23" stroke="var(--pine)" stroke-opacity="0.35" />
+        <line x1="8" y1="35.5" x2="30" y2="35.5" stroke="var(--fern)" stroke-width="2" class="viz-flow" />
+        <path d="M30 32.5 L36 35.5 L30 38.5" fill="none" stroke="var(--fern)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="8" cy="35.5" r="2.5" fill="var(--fern)" class="viz-pulse" />
       </g>
     )
   }
@@ -122,11 +122,11 @@ const { kind } = Astro.props;
           height="18"
           rx="5.5"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2"
           stroke-dasharray="4 4"
         />
-        <rect x="21" y="21" width="15" height="15" rx="5" fill="#0E7C5B" />
+        <rect x="21" y="21" width="15" height="15" rx="5" fill="var(--pine)" />
       </g>
     )
   }
@@ -136,7 +136,7 @@ const { kind } = Astro.props;
       <g>
         <path
           d="M8 13 a4 4 0 0 1 4 -4 H32 a4 4 0 0 1 4 4 V24 a4 4 0 0 1 -4 4 H19 L13 34.5 V28 H12 a4 4 0 0 1 -4 -4 Z"
-          fill="#0E7C5B"
+          fill="var(--pine)"
         />
         {[16, 22, 28].map((cx, i) => (
           <circle
@@ -162,13 +162,13 @@ const { kind } = Astro.props;
           height="19"
           rx="3.5"
           fill="#fff"
-          stroke="#E4E8E5"
+          stroke="var(--line)"
           stroke-width="1.5"
         />
         <path
           d="M7 12.5 L19 21.5 L31 12.5"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="1.8"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -178,7 +178,7 @@ const { kind } = Astro.props;
           y1="35"
           x2="31"
           y2="35"
-          stroke="#0E7C5B"
+          stroke="var(--fern)"
           stroke-width="2"
           stroke-dasharray="3 3"
           class="viz-flow"
@@ -186,7 +186,7 @@ const { kind } = Astro.props;
         <path
           d="M31 32.5 L35.5 35 L31 37.5"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--fern)"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -205,7 +205,7 @@ const { kind } = Astro.props;
           height="29"
           rx="3"
           fill="#fff"
-          stroke="#E4E8E5"
+          stroke="var(--line)"
           stroke-width="1.5"
         />
         <line
@@ -213,7 +213,7 @@ const { kind } = Astro.props;
           y1="14"
           x2="27"
           y2="14"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2"
           stroke-linecap="round"
         />
@@ -222,7 +222,7 @@ const { kind } = Astro.props;
           y1="19"
           x2="27"
           y2="19"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-opacity="0.35"
           stroke-width="2"
           stroke-linecap="round"
@@ -232,7 +232,7 @@ const { kind } = Astro.props;
           y1="24"
           x2="22"
           y2="24"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-opacity="0.35"
           stroke-width="2"
           stroke-linecap="round"
@@ -241,8 +241,8 @@ const { kind } = Astro.props;
           cx="32"
           cy="33"
           r="7.5"
-          fill="#0E7C5B"
-          stroke="#EDF3EF"
+          fill="var(--pine)"
+          stroke="var(--wash)"
           stroke-width="2"
         />
         <path
@@ -260,17 +260,17 @@ const { kind } = Astro.props;
   {
     kind === "target" && (
       <g>
-        <circle cx="22" cy="22" r="14" fill="none" stroke="#0E7C5B" stroke-width="2" />
+        <circle cx="22" cy="22" r="14" fill="none" stroke="var(--pine)" stroke-width="2" />
         <circle
           cx="22"
           cy="22"
           r="8.5"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-opacity="0.45"
           stroke-width="1.5"
         />
-        <circle cx="22" cy="22" r="4" fill="#0E7C5B" class="viz-pulse" />
+        <circle cx="22" cy="22" r="4" fill="var(--fern)" class="viz-pulse" />
       </g>
     )
   }
@@ -285,13 +285,13 @@ const { kind } = Astro.props;
           height="20"
           rx="2.5"
           fill="#fff"
-          stroke="#E4E8E5"
+          stroke="var(--line)"
           stroke-width="1.5"
         />
         <path
           d="M9 16 V10 H15"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -299,7 +299,7 @@ const { kind } = Astro.props;
         <path
           d="M35 16 V10 H29"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -307,7 +307,7 @@ const { kind } = Astro.props;
         <path
           d="M9 28 V34 H15"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -315,7 +315,7 @@ const { kind } = Astro.props;
         <path
           d="M35 28 V34 H29"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -325,7 +325,7 @@ const { kind } = Astro.props;
           y1="22"
           x2="31"
           y2="22"
-          stroke="#0E7C5B"
+          stroke="var(--fern)"
           stroke-width="2"
           stroke-dasharray="6 6"
           class="viz-flow"
@@ -337,11 +337,11 @@ const { kind } = Astro.props;
   {
     kind === "person" && (
       <g>
-        <circle cx="19" cy="16" r="6.5" fill="#0E7C5B" />
+        <circle cx="19" cy="16" r="6.5" fill="var(--pine)" />
         <path
           d="M8 35 a11 11 0 0 1 22 0"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2.5"
           stroke-linecap="round"
         />
@@ -349,8 +349,8 @@ const { kind } = Astro.props;
           cx="33.5"
           cy="13.5"
           r="6.5"
-          fill="#0E7C5B"
-          stroke="#EDF3EF"
+          fill="var(--pine)"
+          stroke="var(--wash)"
           stroke-width="2"
         />
         <path
@@ -371,14 +371,14 @@ const { kind } = Astro.props;
         <path
           d="M22 7 L35 11.5 V22 C35 30 29 35.5 22 37.5 C15 35.5 9 30 9 22 V11.5 Z"
           fill="#fff"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2"
           stroke-linejoin="round"
         />
         <path
           d="M16 22.5 L20.5 27 L30 17.5"
           fill="none"
-          stroke="#0E7C5B"
+          stroke="var(--pine)"
           stroke-width="2.5"
           stroke-linecap="round"
           stroke-linejoin="round"

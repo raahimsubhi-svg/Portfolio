@@ -140,7 +140,7 @@ export default function ContactForm() {
 
   return (
     <form noValidate onSubmit={onSubmit} className="card p-6 md:p-8">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-pine">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-azure-deep">
         Start a project
       </h2>
 
@@ -155,7 +155,7 @@ export default function ContactForm() {
       {sent && (
         <div
           role="status"
-          className="mt-4 rounded-lg border border-pine/30 bg-wash px-4 py-3 text-sm font-medium text-ink"
+          className="mt-4 rounded-lg border border-azure/40 bg-wash px-4 py-3 text-sm font-medium text-ink"
         >
           Thanks — your message is sent. I'll reply within one working day.
         </div>
@@ -185,7 +185,7 @@ export default function ContactForm() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor={ID.name} className={labelCls}>
-              Name <span className="text-pine">*</span>
+              Name <span className="text-azure-deep">*</span>
             </label>
             <input
               id={ID.name}
@@ -207,7 +207,7 @@ export default function ContactForm() {
           </div>
           <div>
             <label htmlFor={ID.email} className={labelCls}>
-              Email <span className="text-pine">*</span>
+              Email <span className="text-azure-deep">*</span>
             </label>
             <input
               id={ID.email}
@@ -262,7 +262,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor={ID.service} className={labelCls}>
-            Select a service <span className="text-pine">*</span>
+            Select a service <span className="text-azure-deep">*</span>
           </label>
           <select
             id={ID.service}
@@ -291,7 +291,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor={ID.problem} className={labelCls}>
-            Tell me about your problem <span className="text-pine">*</span>
+            Tell me about your problem <span className="text-azure-deep">*</span>
           </label>
           <textarea
             id={ID.problem}

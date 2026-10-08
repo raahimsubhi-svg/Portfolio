@@ -29,8 +29,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    border: 1px solid var(--line);
-    background: #fff;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: #fff;
     border-radius: var(--radius-pill);
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
@@ -38,19 +39,6 @@
     white-space: nowrap;
   }
 
-  .stat-chip-dark {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    border: 1px solid rgb(255 255 255 / 0.2);
-    background: rgb(255 255 255 / 0.08);
-    border-radius: var(--radius-pill);
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #fff;
-    white-space: nowrap;
-  }
 
   .index-numeral {
     font-family: var(--font-display);
@@ -369,6 +357,81 @@
   }
 }
 
+/* AI-choice balance scale. The arm sways gently at rest, then tips
+   toward the hovered side (graphic hotspot or either choice card)
+   while a third weight block slides onto that stack. */
+@layer components {
+  @keyframes choice-sway {
+    0%,
+    100% {
+      transform: rotate(-3.5deg);
+    }
+    50% {
+      transform: rotate(3.5deg);
+    }
+  }
+
+  .choice-arm {
+    transform-box: view-box;
+    transform-origin: 160px 128px;
+    rotate: 0deg;
+    animation: choice-sway 7s ease-in-out infinite;
+    transition: rotate 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  svg:has(.choice-side-left:hover) .choice-arm,
+  .ai-choice-grid:has(.choice-no:hover) .choice-arm {
+    rotate: -9deg;
+  }
+
+  svg:has(.choice-side-right:hover) .choice-arm,
+  .ai-choice-grid:has(.choice-yes:hover) .choice-arm {
+    rotate: 9deg;
+  }
+
+  .choice-extra {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  svg:has(.choice-side-left:hover) .choice-extra-left,
+  .ai-choice-grid:has(.choice-no:hover) .choice-extra-left,
+  svg:has(.choice-side-right:hover) .choice-extra-right,
+  .ai-choice-grid:has(.choice-yes:hover) .choice-extra-right {
+    opacity: 1;
+  }
+
+  .choice-label {
+    transition: fill 0.3s ease;
+  }
+
+  svg:has(.choice-side-left:hover) .choice-label-left,
+  .ai-choice-grid:has(.choice-no:hover) .choice-label-left,
+  svg:has(.choice-side-right:hover) .choice-label-right,
+  .ai-choice-grid:has(.choice-yes:hover) .choice-label-right {
+    fill: var(--ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .choice-arm {
+      animation: none;
+      transform: none;
+      transition: none;
+      rotate: 0deg;
+    }
+    svg:has(.choice-side-left:hover) .choice-arm,
+    svg:has(.choice-side-right:hover) .choice-arm,
+    .ai-choice-grid:has(.choice-no:hover) .choice-arm,
+    .ai-choice-grid:has(.choice-yes:hover) .choice-arm {
+      rotate: 0deg;
+    }
+    .choice-extra,
+    .choice-label {
+      transition: none;
+    }
+  }
+}
+
 /* A4: hovered work card runs its workflow — a pulse wave travels
    node 1 → 2 → 3 → 4 on a loop while the pointer is over the card.
    Nodes are fully visible at rest; animation only paints on hover. */
@@ -388,12 +451,12 @@
   @keyframes node-run-accent {
     0%,
     100% {
-      fill: var(--pine);
-      stroke: var(--pine-deep);
+      fill: var(--azure-deep);
+      stroke: var(--azure);
     }
     12% {
-      fill: var(--pine-deep);
-      stroke: var(--pine);
+      fill: var(--azure);
+      stroke: var(--azure-deep);
     }
   }
 

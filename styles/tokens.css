@@ -5,10 +5,14 @@
   --ink: #17201d;
   --ink-soft: #3d4a45;
   --ink-mute: #5c6a64;
-  --pine: #0e7c5b;
-  --pine-deep: #0a5c44;
+  --pine: #1584ab;
+  --pine-deep: #0f6e90;
+  --fern: #1584ab;
+  --azure: #1584ab;
+  --azure-deep: #0f6e90;
+  --azure-bright: #52b4db;
   --line: #e4e8e5;
-  --wash: #edf3ef;
+  --wash: #e9f1f0;
   --card: #ffffff;
   --radius-card: 16px;
   --radius-pill: 999px;
@@ -26,6 +30,10 @@
   --color-ink-mute: var(--ink-mute);
   --color-pine: var(--pine);
   --color-pine-deep: var(--pine-deep);
+  --color-fern: var(--fern);
+  --color-azure: var(--azure);
+  --color-azure-deep: var(--azure-deep);
+  --color-azure-bright: var(--azure-bright);
   --color-line: var(--line);
   --color-wash: var(--wash);
   --color-card: var(--card);

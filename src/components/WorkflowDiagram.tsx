@@ -52,7 +52,7 @@ export default function WorkflowDiagram({
             markerHeight="7"
             orient="auto-start-reverse"
           >
-            <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#0e7c5b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="var(--azure)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
           </marker>
           <marker
             id={arrowDimId}
@@ -111,7 +111,7 @@ export default function WorkflowDiagram({
                 textAnchor="middle"
                 fontSize={9}
                 fontWeight={700}
-                fill={accent ? "#fff" : "var(--pine)"}
+                fill={accent ? "#fff" : "var(--azure-deep)"}
               >
                 {i + 1}
               </text>
